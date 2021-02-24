@@ -87,7 +87,7 @@ codeunit 50016 "FM Facility Mgt. Event Sub."
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"FM Work Order Entry", 'OnAfterCopyWrkOrdEntryFromAptJnlLine', '', true, false)]
-    local procedure AptLedgerEntryOnAfterCopyWrkOrdEntryFromAptJnlLine(var WrkOrdEntry: Record "FM Work Order Entry"; var AptJnlLine: Record "FM Apartment Journal Line")
+    local procedure WorkOrderEntryOnAfterCopyWrkOrdEntryFromAptJnlLine(var WrkOrdEntry: Record "FM Work Order Entry"; var AptJnlLine: Record "FM Apartment Journal Line")
     begin
         WrkOrdEntry."Mt. Wk. Code" := AptJnlLine."Mt. Wk. Code";
         WrkOrdEntry."Wrk. Ord. Requested By" := AptJnlLine."Wrk. Ord. Requested By";

@@ -4,8 +4,6 @@ codeunit 50016 "FM Facility Mgt. Event Sub."
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"FM Apartment-Post", 'OnBeforePostedLineInsert', '', true, false)]
     local procedure ApartmentPostOnBeforePostedLineInsert(var PstdWrkOrdLine: Record "FM Posted Work Order Line"; PstdWrkOrdHeader: Record "FM Posted Work Order Header"; var TempWrkOrdLineGlobal: Record "FM Wrk. Ord. Line" temporary; WrkOrdHeader: Record "FM Wrk. Ord. Header"; SrcCode: Code[10]; CommitIsSuppressed: Boolean)
     var
-        Apt: Record "FM Apartment";
-        MtWrk: Record "FM Maintenance Worker";
         AptJnlLine: Record "FM Apartment Journal Line";
         AptJnlPostLine: Codeunit "FM Apartment Jnl.-Post Line";
     begin

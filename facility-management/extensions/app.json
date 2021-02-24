@@ -1,0 +1,24 @@
+{
+  "id": "d15e12f2-b250-45c3-83e7-ddee27a72bbe",
+  "name": "Facility Management Extensions",
+  "publisher": "joneug",
+  "version": "1.0.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "dependencies": [
+    {
+      "id": "3017319c-8daa-4d3b-96d8-8a5c74f4e97a",
+      "publisher": "joneug",
+      "name": "Facility Management",
+      "version": "1.0.0.0"
+    }
+  ],
+  "idRanges": [
+    {
+      "from": 50016,
+      "to": 50020
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "6.0"
+}

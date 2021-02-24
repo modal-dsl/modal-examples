@@ -1,0 +1,117 @@
+solution "Facility Management" {
+    Prefix = "FM";
+
+    master "Apartment" {
+        ShortName = "Apt.";
+
+        fields {
+            template("Description"; Description)
+            template("Building"; Address)
+            field("Floor"; Text[50])
+            field("Type"; Enum["Studio", "Maisonette"])
+        }
+
+        cardPage {
+            group("General") {
+                field("Description")
+                field("Type")
+            }
+            group("Building") {
+                field("Building")
+                field("Floor")
+            }
+        }
+
+        listPage {
+            field("Description")
+            field("Floor")
+        }
+    }
+
+    supplemental "Maintenance Worker" {
+        ShortName = "Mt. Wrk.";
+
+        fields {
+            template("Name"; Name)
+            template("Contact Information"; ContactInfo)
+        }
+
+        listPage {
+            field("Name")
+        }
+    }
+
+    document "Work Order" {
+        ShortName = "Wrk. Ord.";
+
+        header "Work Order Header" {
+            ShortName = "Wrk. Ord. Header";
+            StatusCaptions = ["Planning", "Finished"];
+
+            fields {
+                include("Apt. No."; "Apartment"."No.")
+                include("Apt. Description"; "Apartment"."Description")
+                include("Apt. Building"; "Apartment"."Building")
+                include("Mt. Wk. Code"; "Maintenance Worker"."Code")
+                include("Mt. Wk. Name"; "Maintenance Worker"."Name")
+                field("Finish Until"; Date)
+                field("Requested By"; Text[50])
+            }
+
+            documentPage {
+                group("General") {
+                    field("Apt. No.")
+                    field("Apt. Description")
+                    field("Apt. Building")
+                    field("Mt. Wk. Code")
+                    field("Mt. Wk. Name")
+                    field("Finish Until")
+                    field("Requested By")
+                }
+            }
+
+            listPage {
+                field("Apt. Description")
+                field("Apt. Building")
+                field("Mt. Wk. Code")
+                field("Mt. Wk. Name")
+            }
+        }
+
+        line "Work Order Line" {
+            ShortName = "Wrk. Ord. Line";
+
+            fields {
+                field("Cost Type"; Enum["Material", "Labor"])
+                field("Description"; Text[50])
+                field("Quantity"; Decimal)
+                field("Amount"; Decimal)
+            }
+
+            listPartPage {
+                field("Cost Type")
+                field("Description")
+                field("Quantity")
+                field("Amount")
+            }
+        }
+    }
+
+    ledgerEntry "Work Order Entry" {
+        ShortName = "Wrk. Ord. Entry";
+
+        fields {
+            include("Mt. Wk. Code"; "Maintenance Worker"."Code")
+            include("Wrk. Ord. Requested By"; "Work Order Header"."Requested By")
+            include("Wrk. Ord. Cost Type"; "Work Order Line"."Cost Type")
+            include("Wrk. Ord. Quantity"; "Work Order Line"."Quantity")
+            include("Wrk. Ord. Amount"; "Work Order Line"."Amount")
+        }
+
+        listPage {
+            field("Wrk. Ord. Cost Type")
+            field("Wrk. Ord. Quantity")
+            field("Wrk. Ord. Amount")
+        }
+    }
+}

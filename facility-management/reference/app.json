@@ -1,0 +1,16 @@
+{
+  "id": "c620ec43-7bea-4a50-a867-6ef24ba0e568",
+  "name": "Facility Management",
+  "publisher": "joneug",
+  "version": "1.0.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50020
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "6.0"
+}

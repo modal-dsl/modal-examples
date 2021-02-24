@@ -1,0 +1,24 @@
+{
+  "id": "b6423b09-fcb9-4c6a-9861-f24208c20306",
+  "name": "Library Management Extensions",
+  "publisher": "joneug",
+  "version": "1.0.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "dependencies": [
+    {
+      "id": "7b903659-b932-48ad-a905-b1a4ca49ec47",
+      "publisher": "joneug",
+      "name": "Library Management",
+      "version": "1.0.0.0"
+    }
+  ],
+  "idRanges": [
+    {
+      "from": 50036,
+      "to": 50039
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "6.0"
+}

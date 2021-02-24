@@ -1,0 +1,117 @@
+solution "Library Management" {
+    Prefix = "LM";
+
+    master "Book" {
+        ShortName = "Book";
+
+        fields {
+            template("Description"; Description)
+            field("Book Type"; Enum["Softcover", "Hardcover", "Digital"])
+            field("Author"; Text[50])
+            field("Language Code"; Code[10]) {
+                TableRelation = "Language";
+            }
+            field("Page Count"; Integer)
+            field("Release Date"; Date)
+            field("Publisher"; Text[50])
+            field("ISBN"; Code[20])
+        }
+
+        cardPage {
+            group("General") {
+                field("Description")
+                field("Book Type")
+                field("Author")
+                field("Language Code")
+                field("Page Count")
+                field("Release Date")
+                field("Publisher")
+                field("ISBN")
+            }
+        }
+
+        listPage {
+            field("Description")
+            field("Book Type")
+            field("Author")
+            field("Language Code")
+            field("Publisher")
+            field("ISBN")
+        }
+    }
+
+    supplemental "Library User" {
+        ShortName = "Lib. User";
+        
+        fields {
+            template("Name"; Name)
+        }
+        
+        listPage {
+            field("Name")
+        }
+    }
+    
+    document "Loan Order" {
+        ShortName = "Loan Ord.";
+
+        header "Loan Order Header" {
+            ShortName = "Loan Ord. Header";
+            StatusCaptions = ["Open", "Finished"];
+
+            fields {
+                include("Book No."; "Book"."No.")
+                include("Library User Code"; "Library User"."Code")
+                field("Loan Start"; Date)
+                field("Loan End"; Date)
+            }
+
+            documentPage {
+                group("General") {
+                    field("Library User Code")
+                    field("Loan Start")
+                    field("Loan End")
+                }
+            }
+
+            listPage {
+                field("Library User Code")
+                field("Loan Start")
+                field("Loan End")
+            }
+        }
+
+        line "Loan Order Line" {
+            ShortName = "Loan Ord. Line";
+
+            fields {
+                field("Event Date"; Date)
+                field("Event Type"; Enum["Loan", "Return", "Loss"])
+                field("Description"; Text[50])
+            }
+
+            listPartPage {
+                field("Event Date")
+                field("Event Type")
+                field("Description")
+            }
+        }
+    }
+
+    ledgerEntry "Loan Entry" {
+        ShortName = "Loan Entry";
+        
+        fields {
+            include("Library User Code"; "Library User"."Code")
+            include("Event Date"; "Loan Order Line"."Event Date")
+            include("Event Type"; "Loan Order Line"."Event Type")
+        }
+
+        listPage {
+            field("Library User Code")
+            field("Event Date")
+            field("Event Type")
+        }
+    }
+
+}

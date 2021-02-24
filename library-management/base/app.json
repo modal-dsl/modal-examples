@@ -1,0 +1,16 @@
+{
+  "id": "7b903659-b932-48ad-a905-b1a4ca49ec47",
+  "name": "Library Management",
+  "publisher": "joneug",
+  "version": "1.0.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 50020,
+      "to": 50035
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "6.0"
+}

@@ -1,0 +1,12 @@
+# VS Code
+.vscode/
+
+# AL
+.alcache/
+.alpackages/
+.altemplates/
+.snapshots/
+*.app
+
+# Generated AL files
+src-gen/

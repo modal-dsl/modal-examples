@@ -1,0 +1,16 @@
+{
+  "id": "4df485b6-9dcc-4123-a6bf-fe2832f0c99d",
+  "name": "Seminar Management",
+  "publisher": "joneug",
+  "version": "1.2.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 501020
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "6.0"
+}

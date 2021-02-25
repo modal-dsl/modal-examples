@@ -1,0 +1,86 @@
+solution "Laboratory Management" {
+    Prefix = "LM";
+
+    master "Patient" {
+        ShortName = "Pat.";
+
+        fields {
+            template("Name"; Name)
+            field("Gender"; Option["Female", "Male"])
+            field("Birthday"; Date)
+            field("Blood Type"; Option["A", "B", "AB", "O"])
+            template("Contact Information"; ContactInfo)
+        }
+
+        cardPage {
+            group("General") {
+                field("Name")
+                field("Gender")
+                field("Birthday")
+            }
+            group("Contact Information") {
+                field("Contact Information")
+            }
+        }
+
+        listPage {
+            field("Name")
+            field("Gender")
+            field("Birthday")
+        }
+    }
+    
+    document "Blood Test" {
+        ShortName = "Bld. Test";
+
+        header "Blood Test Header" {
+            ShortName = "Bld. Test Header";
+            StatusCaptions = ["Open", "Finished"];
+
+            fields {
+                include("Patient No."; "Patient"."No.")
+                include("Patient Name"; "Patient"."Name")
+            }
+
+            documentPage {
+                group("General") {
+                    field("Patient No.")
+                }
+            }
+
+            listPage {
+                field("Patient No.")
+            }
+        }
+
+        line "Blood Test Line" {
+            ShortName = "Bld. Test Line";
+
+            fields {
+                field("Description"; Text[50])
+                field("Measurement"; Decimal)
+                field("Result"; Option["", "OK", "Not OK"])
+            }
+
+            listPartPage {
+                field("Description")
+                field("Measurement")
+            }
+        }
+    }
+
+    ledgerEntry "Patient Entry" {
+        ShortName = "Pat. Entry";
+        
+        fields {
+            include("Measurement"; "Blood Test Line"."Measurement")
+            include("Result"; "Blood Test Line"."Result")
+        }
+
+        listPage {
+            field("Measurement")
+            field("Result")
+        }
+    }
+
+}

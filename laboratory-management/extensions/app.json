@@ -1,0 +1,24 @@
+{
+  "id": "64cedfbf-7693-45f8-b982-a13886f2ad42",
+  "name": "Laboratory Management Extensions",
+  "publisher": "joneug",
+  "version": "1.0.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "dependencies": [
+    {
+      "id": "0cb86920-760a-4c19-b7f1-b0e7e61e95f4",
+      "publisher": "joneug",
+      "name": "Laboratory Management",
+      "version": "1.0.0.0"
+    }
+  ],
+  "idRanges": [
+    {
+      "from": 50056,
+      "to": 50059
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "6.0"
+}

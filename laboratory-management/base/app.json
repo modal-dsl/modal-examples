@@ -1,0 +1,16 @@
+{
+  "id": "0cb86920-760a-4c19-b7f1-b0e7e61e95f4",
+  "name": "Laboratory Management",
+  "publisher": "joneug",
+  "version": "1.0.0.0",
+  "platform": "17.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 50040,
+      "to": 50055
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "6.0"
+}
